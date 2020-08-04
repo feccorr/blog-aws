@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
 <html>
 <head>
 
@@ -29,10 +32,17 @@
                </nav>
 
 
-               <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" >
+               <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
                    <div class="card-body">
-                        teste
-                   </div>
+                       <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+                           <span th:text="${post.autor}"></span>
+                           <span th:text="${post.data}"></span>
+                       </p>
+
+                           <a href="#"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"></h4><span th:text = "${post.titulo}"></span></a>
+
+                             <p class="card-text"><span th:utext="${#strings.abbreviate(post.texto,400)} "></span></p>
+
                </div>
 
 

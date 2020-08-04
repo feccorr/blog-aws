@@ -23,6 +23,9 @@ public class CodeblogController {
         ModelAndView mv = new ModelAndView("posts");
         List<Post> posts = codeblogService.findAll();
         mv.addObject("posts",posts);
+        for(Post post:posts){
+            System.out.println(post);
+        }
         return mv;
     }
 }

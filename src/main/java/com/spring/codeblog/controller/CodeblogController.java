@@ -5,6 +5,8 @@ import com.spring.codeblog.model.Post;
 import com.spring.codeblog.service.CodeblogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,4 +30,17 @@ public class CodeblogController {
         }
         return mv;
     }
+
+    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
+    public ModelAndView getPostDetails(@PathVariable("id") long id ){
+        ModelAndView mv = new ModelAndView("postDetails");
+        Post post = codeblogService.findById(id);
+        mv.addObject("postDetails",post) ;
+        return mv;
+    }
+
+
+
+
+
 }

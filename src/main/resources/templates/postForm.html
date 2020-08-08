@@ -32,6 +32,7 @@
         </nav>
         <div>
 
+            <th:block th:include="mensagemValidacao"> </th:block>
             <form method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" name="titulo" placeholder="Título *">
@@ -52,7 +53,13 @@
     </div>
 </section>
 
-
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Texto *',
+        tabsize: 2,
+        height: 300
+    });
+</script>
 
 </body>
 </html>

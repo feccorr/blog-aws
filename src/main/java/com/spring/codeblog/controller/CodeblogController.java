@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMethodMappingNamingStrategy;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -50,8 +50,9 @@ public class CodeblogController {
     }
 
     @RequestMapping(value = "/newpost", method = RequestMethod.POST)
-    public String savePost(@Validated Post post, BindingResult result, RedirectAttributes attributes){
-        if(result.hasErrors()){
+    public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes){
+        if(post.getAutor() == "" || post.getTexto() == "" || post.getTitulo() == ""){
+            attributes.addFlashAttribute("message","Verifique se os campos obrigatorios foram preenchidos !");
             return "redirect:/newpost";
         }
         post.setData(LocalDate.now());

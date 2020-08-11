@@ -92,3 +92,4 @@ Após o termino verificar o status do deploy:
 $ eb status
 ```
 
+![ss code blog](https://user-images.githubusercontent.com/45246027/89851323-99183580-db62-11ea-9e14-7779fdbc4219.jpg)
